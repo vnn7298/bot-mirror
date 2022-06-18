@@ -122,17 +122,17 @@ help_string_telegraph = f'''<br>
 <br><br>
 <b>/{BotCommands.UnzipLeechCommand}</b> [download_url][magnet_link][torent_file]: Chuyển file lên Telegram và Upload File/Folder sau khi giải nén
 <br><br>
-<b>/{BotCommands.QbLeechCommand}</b> [magnet_link][torrent_file][torrent_file_url]: Start leeching to Telegram using qBittorrent, Use <b>/{BotCommands.QbLeechCommand} s</b> to select files before leeching
+<b>/{BotCommands.QbLeechCommand}</b> [magnet_link][torrent_file][torrent_file_url]: Chuyển File torrent lên telegram bằng qBittorrent, Use <b>/{BotCommands.QbLeechCommand} s</b> Để chọn trước khi chuyển
 <br><br>
-<b>/{BotCommands.QbZipLeechCommand}</b> [magnet_link][torrent_file][torrent_file_url]: Start leeching to Telegram using qBittorrent and upload the file/folder compressed with zip extension
+<b>/{BotCommands.QbZipLeechCommand}</b> [magnet_link][torrent_file][torrent_file_url]: Chuyển File torrent lên telegram bằng qBittorrent và Upload File/Folder đã được nén
 <br><br>
-<b>/{BotCommands.QbUnzipLeechCommand}</b> [magnet_link][torrent_file][torrent_file_url]: Start leeching to Telegram using qBittorrent and upload the file/folder extracted from any archive extension
+<b>/{BotCommands.QbUnzipLeechCommand}</b> [magnet_link][torrent_file][torrent_file_url]: Chuyển File torrent lên telegram bằng qBittorrent và Upload File/Folder đã được giải nén
 <br><br>
-<b>/{BotCommands.CloneCommand}</b> [drive_url][gdtot_url]: Copy file/folder to Google Drive
+<b>/{BotCommands.CloneCommand}</b> [drive_url][gdtot_url]: Copy File/Folder của Google Drive
 <br><br>
-<b>/{BotCommands.CountCommand}</b> [drive_url][gdtot_url]: Count file/folder of Google Drive
+<b>/{BotCommands.CountCommand}</b> [drive_url][gdtot_url]: Đếm File/Folder của Google Drive
 <br><br>
-<b>/{BotCommands.DeleteCommand}</b> [drive_url]: Delete file/folder from Google Drive (Only Owner & Sudo)
+<b>/{BotCommands.DeleteCommand}</b> [drive_url]: Xóa File/Folder trên Google Drive (Only Owner & Sudo)
 <br><br>
 <b>/{BotCommands.WatchCommand}</b> [yt-dlp supported link]: Mirror yt-dlp supported link. Send <b>/{BotCommands.WatchCommand}</b> for more help
 <br><br>
@@ -156,17 +156,17 @@ help_string_telegraph = f'''<br>
 <br><br>
 <b>/{BotCommands.RssSettingsCommand}</b>: Rss Settings
 <br><br>
-<b>/{BotCommands.CancelMirror}</b>: Reply to the message by which the download was initiated and that download will be cancelled
+<b>/{BotCommands.CancelMirror}</b>: Trả lời tin nhắn cần dừng và file đó sẽ được dừng
 <br><br>
-<b>/{BotCommands.CancelAllCommand}</b>: Cancel all downloading tasks
+<b>/{BotCommands.CancelAllCommand}</b>: Dừng tất cả các công việc
 <br><br>
-<b>/{BotCommands.ListCommand}</b> [query]: Search in Google Drive(s)
+<b>/{BotCommands.ListCommand}</b> [query]: Tìm kiếm trong GoogleDrive
 <br><br>
 <b>/{BotCommands.SearchCommand}</b> [query]: Search for torrents with API
 <br>sites: <code>rarbg, 1337x, yts, etzv, tgx, torlock, piratebay, nyaasi, ettv</code><br><br>
-<b>/{BotCommands.StatusCommand}</b>: Shows a status of all the downloads
+<b>/{BotCommands.StatusCommand}</b>: Xem tình trạng của bot
 <br><br>
-<b>/{BotCommands.StatsCommand}</b>: Show Stats of the machine the bot is hosted on
+<b>/{BotCommands.StatsCommand}</b>: Xem dung lượng của server
 '''
 
 help = telegraph.create_page(
@@ -175,23 +175,23 @@ help = telegraph.create_page(
     )["path"]
 
 help_string = f'''
-/{BotCommands.PingCommand}: Check how long it takes to Ping the Bot
+/{BotCommands.PingCommand}: Kiểm tra ping của Server
 
-/{BotCommands.AuthorizeCommand}: Authorize a chat or a user to use the bot (Can only be invoked by Owner & Sudo of the bot)
+/{BotCommands.AuthorizeCommand}: Xác thực nhóm Chat hoặc người dùng (Can only be invoked by Owner & Sudo of the bot)
 
-/{BotCommands.UnAuthorizeCommand}: Unauthorize a chat or a user to use the bot (Can only be invoked by Owner & Sudo of the bot)
+/{BotCommands.UnAuthorizeCommand}: Hủy xác thực nhóm Chat hoặc người dùng (Can only be invoked by Owner & Sudo of the bot)
 
-/{BotCommands.AuthorizedUsersCommand}: Show authorized users (Only Owner & Sudo)
+/{BotCommands.AuthorizedUsersCommand}: Xem user đã được xác thực (Only Owner & Sudo)
 
-/{BotCommands.AddSudoCommand}: Add sudo user (Only Owner)
+/{BotCommands.AddSudoCommand}: Thêm sudo user (Only Owner)
 
-/{BotCommands.RmSudoCommand}: Remove sudo users (Only Owner)
+/{BotCommands.RmSudoCommand}: Xóa sudo user (Only Owner)
 
-/{BotCommands.RestartCommand}: Restart and update the bot
+/{BotCommands.RestartCommand}: Khởi động lại và Cập nhật Bot
 
-/{BotCommands.LogCommand}: Get a log file of the bot. Handy for getting crash reports
+/{BotCommands.LogCommand}: Lấy log của bot
 
-/{BotCommands.ShellCommand}: Run commands in Shell (Only Owner)
+/{BotCommands.ShellCommand}: Chạy commands trong Shell (Only Owner)
 
 /{BotCommands.ExecHelpCommand}: Get help for Executor module (Only Owner)
 '''
@@ -205,35 +205,35 @@ def bot_help(update, context):
 botcmds = [
 
         (f'{BotCommands.MirrorCommand}', 'Mirror'),
-        (f'{BotCommands.ZipMirrorCommand}','Mirror and upload as zip'),
-        (f'{BotCommands.UnzipMirrorCommand}','Mirror and extract files'),
-        (f'{BotCommands.QbMirrorCommand}','Mirror torrent using qBittorrent'),
-        (f'{BotCommands.QbZipMirrorCommand}','Mirror torrent and upload as zip using qb'),
-        (f'{BotCommands.QbUnzipMirrorCommand}','Mirror torrent and extract files using qb'),
+        (f'{BotCommands.ZipMirrorCommand}','Mirror và Upload như .zip'),
+        (f'{BotCommands.UnzipMirrorCommand}','Mirror và giải nén Files'),
+        (f'{BotCommands.QbMirrorCommand}','Mirror torrent bằng qBittorrent'),
+        (f'{BotCommands.QbZipMirrorCommand}','Mirror torrent và upload .zip bằng qb'),
+        (f'{BotCommands.QbUnzipMirrorCommand}','Mirror torrent và giải nén Files bằng qb'),
         (f'{BotCommands.WatchCommand}','Mirror yt-dlp supported link'),
         (f'{BotCommands.ZipWatchCommand}','Mirror yt-dlp supported link as zip'),
-        (f'{BotCommands.CloneCommand}','Copy file/folder to Drive'),
-        (f'{BotCommands.LeechCommand}','Leech'),
-        (f'{BotCommands.ZipLeechCommand}','Leech and upload as zip'),
-        (f'{BotCommands.UnzipLeechCommand}','Leech and extract files'),
-        (f'{BotCommands.QbLeechCommand}','Leech torrent using qBittorrent'),
-        (f'{BotCommands.QbZipLeechCommand}','Leech torrent and upload as zip using qb'),
-        (f'{BotCommands.QbUnzipLeechCommand}','Leech torrent and extract using qb'),
+        (f'{BotCommands.CloneCommand}','Copy file/folder đến Drive'),
+        (f'{BotCommands.LeechCommand}','Upload lên Telegram'),
+        (f'{BotCommands.ZipLeechCommand}','Upload lên Telegram nén .zip'),
+        (f'{BotCommands.UnzipLeechCommand}','Upload lên Telegram đã được giải nén'),
+        (f'{BotCommands.QbLeechCommand}','Upload Telegram bằng qBittorrent'),
+        (f'{BotCommands.QbZipLeechCommand}','Upload File Torrent lên Telegram bằng qb'),
+        (f'{BotCommands.QbUnzipLeechCommand}','Upload File Torrent lên Telegram và giải nén bằng qb'),
         (f'{BotCommands.LeechWatchCommand}','Leech yt-dlp supported link'),
         (f'{BotCommands.LeechZipWatchCommand}','Leech yt-dlp supported link as zip'),
-        (f'{BotCommands.CountCommand}','Count file/folder of Drive'),
-        (f'{BotCommands.DeleteCommand}','Delete file/folder from Drive'),
-        (f'{BotCommands.CancelMirror}','Cancel a task'),
-        (f'{BotCommands.CancelAllCommand}','Cancel all downloading tasks'),
-        (f'{BotCommands.ListCommand}','Search in Drive'),
+        (f'{BotCommands.CountCommand}','Đếm file/folder của link Drive'),
+        (f'{BotCommands.DeleteCommand}','Xóa file/folder từ Drive'),
+        (f'{BotCommands.CancelMirror}','Hủy task'),
+        (f'{BotCommands.CancelAllCommand}','Hủy tất cả các task'),
+        (f'{BotCommands.ListCommand}','Tìm kiếm trong Drive'),
         (f'{BotCommands.LeechSetCommand}','Leech settings'),
         (f'{BotCommands.SetThumbCommand}','Set thumbnail'),
-        (f'{BotCommands.StatusCommand}','Get mirror status message'),
-        (f'{BotCommands.StatsCommand}','Bot usage stats'),
-        (f'{BotCommands.PingCommand}','Ping the bot'),
-        (f'{BotCommands.RestartCommand}','Restart the bot'),
-        (f'{BotCommands.LogCommand}','Get the bot Log'),
-        (f'{BotCommands.HelpCommand}','Get detailed help')
+        (f'{BotCommands.StatusCommand}','Tình trạng Bot'),
+        (f'{BotCommands.StatsCommand}','Dung lượng server'),
+        (f'{BotCommands.PingCommand}','Kiểm tra Ping'),
+        (f'{BotCommands.RestartCommand}','Khởi động lại bot'),
+        (f'{BotCommands.LogCommand}','Lấy log của Bot'),
+        (f'{BotCommands.HelpCommand}','Xem tất cả các lệnh')
     ]
 
 def main():
