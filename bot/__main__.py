@@ -65,20 +65,20 @@ def stats(update, context):
 
 def start(update, context):
     buttons = ButtonMaker()
-    buttons.buildbutton("Repo", "https://www.github.com/anasty17/mirror-leech-telegram-bot")
-    buttons.buildbutton("Report Group", "https://t.me/+PRRzqHd31XY3ZWZk")
+    buttons.buildbutton("Repo", "https://www.github.com/iamtayky/mirror-bot")
+    buttons.buildbutton("Report Group", "https://t.me/picassoneverdie")
     reply_markup = InlineKeyboardMarkup(buttons.build_menu(2))
     if CustomFilters.authorized_user(update) or CustomFilters.authorized_chat(update):
         start_string = f'''
-This bot can mirror all your links to Google Drive!
-Type /{BotCommands.HelpCommand} to get a list of available commands
+Bot có thể chuyển mọi link qua GoogleDrive!
+Type /{BotCommands.HelpCommand} để xem tất cả các lệnh của Bot
 '''
         sendMarkup(start_string, context.bot, update.message, reply_markup)
     else:
-        sendMarkup('Not Authorized user, deploy your own mirror-leech bot', context.bot, update.message, reply_markup)
+        sendMarkup('Không xác thực , Vui lòng tự deploy cho riêng mình', context.bot, update.message, reply_markup)
 
 def restart(update, context):
-    restart_message = sendMessage("Restarting...", context.bot, update.message)
+    restart_message = sendMessage("Khởi động lại...", context.bot, update.message)
     if Interval:
         Interval[0].cancel()
     clean_all()
@@ -102,25 +102,25 @@ def log(update, context):
 
 
 help_string_telegraph = f'''<br>
-<b>/{BotCommands.HelpCommand}</b>: To get this message
+<b>/{BotCommands.HelpCommand}</b>: Để nhận tin nhắn này
 <br><br>
-<b>/{BotCommands.MirrorCommand}</b> [download_url][magnet_link]: Start mirroring to Google Drive. Send <b>/{BotCommands.MirrorCommand}</b> for more help
+<b>/{BotCommands.MirrorCommand}</b> [download_url][magnet_link]: Chuyển qua GoogleDrive. Send <b>/{BotCommands.MirrorCommand}</b> for more help
 <br><br>
-<b>/{BotCommands.ZipMirrorCommand}</b> [download_url][magnet_link]: Start mirroring and upload the file/folder compressed with zip extension
+<b>/{BotCommands.ZipMirrorCommand}</b> [download_url][magnet_link]: Chuyển File/Folder dưới dạng nén .zip qua GoogleDrive
 <br><br>
-<b>/{BotCommands.UnzipMirrorCommand}</b> [download_url][magnet_link]: Start mirroring and upload the file/folder extracted from any archive extension
+<b>/{BotCommands.UnzipMirrorCommand}</b> [download_url][magnet_link]: Chuyển File/Folder đã được giải nén qua GoogleDrive
 <br><br>
-<b>/{BotCommands.QbMirrorCommand}</b> [magnet_link][torrent_file][torrent_file_url]: Start Mirroring using qBittorrent, Use <b>/{BotCommands.QbMirrorCommand} s</b> to select files before downloading
+<b>/{BotCommands.QbMirrorCommand}</b> [magnet_link][torrent_file][torrent_file_url]: Get File Torrent bằng qBittorrent , Use <b>/{BotCommands.QbMirrorCommand} s</b> Chọn File trước khi bắt đầu
 <br><br>
-<b>/{BotCommands.QbZipMirrorCommand}</b> [magnet_link][torrent_file][torrent_file_url]: Start mirroring using qBittorrent and upload the file/folder compressed with zip extension
+<b>/{BotCommands.QbZipMirrorCommand}</b> [magnet_link][torrent_file][torrent_file_url]: Get File Torrent bằng qBittorrent và Upload lên dưới dạng nén .zip
 <br><br>
-<b>/{BotCommands.QbUnzipMirrorCommand}</b> [magnet_link][torrent_file][torrent_file_url]: Start mirroring using qBittorrent and upload the file/folder extracted from any archive extension
+<b>/{BotCommands.QbUnzipMirrorCommand}</b> [magnet_link][torrent_file][torrent_file_url]: Get File Torrent bằng qBittorrent và Upload lên sau khi được giải nén
 <br><br>
-<b>/{BotCommands.LeechCommand}</b> [download_url][magnet_link]: Start leeching to Telegram, Use <b>/{BotCommands.LeechCommand} s</b> to select files before leeching
+<b>/{BotCommands.LeechCommand}</b> [download_url][magnet_link]: Chuyển file lên Telegram , Use <b>/{BotCommands.LeechCommand} s</b> Để chọn file trước khi chuyển
 <br><br>
-<b>/{BotCommands.ZipLeechCommand}</b> [download_url][magnet_link]: Start leeching to Telegram and upload the file/folder compressed with zip extension
+<b>/{BotCommands.ZipLeechCommand}</b> [download_url][magnet_link]: Chuyển file lên Telegram và Upload file/folder dưới dạng nén
 <br><br>
-<b>/{BotCommands.UnzipLeechCommand}</b> [download_url][magnet_link][torent_file]: Start leeching to Telegram and upload the file/folder extracted from any archive extension
+<b>/{BotCommands.UnzipLeechCommand}</b> [download_url][magnet_link][torent_file]: Chuyển file lên Telegram và Upload File/Folder sau khi giải nén
 <br><br>
 <b>/{BotCommands.QbLeechCommand}</b> [magnet_link][torrent_file][torrent_file_url]: Start leeching to Telegram using qBittorrent, Use <b>/{BotCommands.QbLeechCommand} s</b> to select files before leeching
 <br><br>
@@ -275,7 +275,7 @@ def main():
     if ospath.isfile(".restartmsg"):
         with open(".restartmsg") as f:
             chat_id, msg_id = map(int, f)
-        bot.edit_message_text("Restarted successfully!", chat_id, msg_id)
+        bot.edit_message_text("Khởi động thành công!", chat_id, msg_id)
         osremove(".restartmsg")
 
     start_handler = CommandHandler(BotCommands.StartCommand, start, run_async=True)
