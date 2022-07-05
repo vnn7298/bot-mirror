@@ -104,6 +104,8 @@ def log(update, context):
 help_string_telegraph = f'''<br>
 <b>/{BotCommands.HelpCommand}</b>: Để nhận tin nhắn này
 <br><br>
+<b>/{BotCommands.MirrorFshare}</b> [download_url][magnet_link]: Tải link Fshare qua Google Drive
+<br><br>
 <b>/{BotCommands.MirrorCommand}</b> [download_url][magnet_link]: Chuyển qua GoogleDrive. Send <b>/{BotCommands.MirrorCommand}</b> for more help
 <br><br>
 <b>/{BotCommands.ZipMirrorCommand}</b> [download_url][magnet_link]: Chuyển File/Folder dưới dạng nén .zip qua GoogleDrive
